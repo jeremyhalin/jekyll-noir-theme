@@ -2,18 +2,16 @@
 layout: default
 ---
 
-{{ content }}
-
-<div class="posts">
+<div class="posts-list">
     <h1>Posts</h1>
     {%- for post in site.posts -%}
-    <article class="post">
-        <h3 class="post__title">
-            <a class="post__link" href="{{ post.url | relative_url }}">
+    <article class="posts-list__post">
+        <h3 class="posts-list__post__title">
+            <a class="posts-list__post__link" href="{{ post.url | relative_url }}">
                 {{ post.title | escape }}
             </a>
         </h3>
-        <span class="post__meta">{{ post.date | date: site.noir.date_format }}</span>
+        <span class="posts-list__post__meta">{{ post.date | date: site.noir.date_format }}</span>
     </article>
     {%- endfor -%}
 </div>

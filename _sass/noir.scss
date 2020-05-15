@@ -1,57 +1,16 @@
-/* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
-*/
-
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-}
-/* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
-	display: block;
-}
-body {
-	line-height: 1;
-}
-ol, ul {
-	list-style: none;
-}
-blockquote, q {
-	quotes: none;
-}
-blockquote:before, blockquote:after,
-q:before, q:after {
-	content: '';
-	content: none;
-}
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-}
+@import "reset";
+@import "dracula";
 
 /* variables */
 :root {
-    --site-width: 600px;
+    --site-width: 680px;
     --background-dark: #121212;
     --main-font-color: #ffffff;
+    --margin-bottom: 34px;
+    --base-font-size: 20px;
+    --base-line-height: 34px;
+    --heading-font-size: 41px;
+    --heading-line-height: 64px;
 }
 
 html, body {
@@ -59,29 +18,50 @@ html, body {
     color: var(--main-font-color);
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Helvetica Neue", Arial, sans-serif;
     padding: .5rem;
+    font-size: var(--base-font-size);
+    line-height: var(--base-line-height);
+}
+
+figure.highlight {
+    padding: 1rem;
+    border-radius: 4px;
+    margin: var(--margin-bottom) auto;
+    font-family: 'Courier New', Courier, monospace;
+    background-color: rgba(255, 255, 255, .05);
+}
+
+a {
+    color: inherit;
 }
 
 h1 {
-    font-size: x-large;
-    font-weight: bolder;
+    font-size: var(--heading-font-size);
+    line-height: var(--heading-line-height);
+    font-weight: bold;
 }
 
-header, footer, div.posts {
-    margin: 0 auto;
+footer {
+    font-size: 16px;
 }
 
-article.post {
-    margin-bottom: 1rem;
+header, footer, div.posts-list, article.post {
+    margin: 0 auto 2rem auto;
+}
 
-    .post__meta {
-        opacity: .60;
-    }
-    .post__title {
-        font-weight: bold;
-        color: var(--main-font-color);
+div.posts-list {
+    article.posts-list__post {
+        margin-bottom: 1rem;
 
-        .post__link {
+        .posts-list__post__meta {
+            opacity: .60;
+        }
+        .posts-list__post__title {
+            font-weight: bold;
             color: var(--main-font-color);
+
+            .posts-list__post__link {
+                color: var(--main-font-color);
+            }
         }
     }
 }
@@ -91,8 +71,24 @@ footer {
     opacity: .38;
 }
 
+.post__categories__category {
+    display: inline-flex;
+    border-radius: 4px;
+    padding: .1rem .8rem;
+    font-size: 16px;
+    line-height: 28px;
+    
+    &.post__categories__category--react {
+        background: #27dcfa;
+        color: black;
+    }
+    &.post__categories__category--php {
+        background-color: #777bb3;
+    }
+}
+
 @media (min-width: 640px) {
-    header, footer, div.posts {
+    header, footer, div.posts-list, article.post {
         max-width: var(--site-width);
     }
 }

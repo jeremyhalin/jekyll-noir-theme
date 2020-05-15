@@ -2,4 +2,16 @@
 layout: default
 ---
 
-{{ content }}
+<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+    <h1>{{ page.title | escape }}</h1>
+
+    <ul class="post__categories">
+        {%- for category in page.categories -%}
+        <li class="post__categories__category post__categories__category--{{category | downcase}}">{{ category }}</li>
+        {% endfor %}
+    </ul>
+
+    <div class="post__content" itemprop="articleBody">
+        {{ content }}
+    </div>
+</article>
