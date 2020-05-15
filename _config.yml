@@ -1,0 +1,4 @@
+theme: noir
+
+noir:
+  date_format: "%b %-d, %Y"
