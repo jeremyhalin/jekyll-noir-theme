@@ -1,6 +1,37 @@
 @import "reset";
 @import "dracula";
 
+
+@mixin link-fill-on-hover {
+    position: relative;
+    text-decoration: none;
+    display: inline-block;
+    color: white;
+    z-index: 1;
+    padding: 0 4px;
+    transition: color ease 0.3s;
+
+    &::after {
+        content: '';
+        position: absolute;
+        z-index: -1;
+        width: 100%;
+        height: 5%;
+        left: 0;
+        bottom: 0;
+        background-color: royalblue;
+        -webkit-transition: all ease 0.3s;
+        transition: all ease 0.3s;
+    }
+
+    &:hover {
+        color: white;
+        &::after {
+            height: 90%;
+        }
+    }
+}
+
 /* variables */
 :root {
     --site-width: 680px;
@@ -23,7 +54,7 @@ html, body {
 }
 
 main.content {
-    margin: 0 auto var(--margin-bottom) auto;
+    margin: 0 auto var(--spacing-4) auto;
 }
 
 header {
@@ -34,7 +65,8 @@ header {
         .site-nav__link {
             padding: 1rem;
             opacity: .60;
-
+            text-decoration: none;
+            text-transform: uppercase;
 
             &.site-nav__link--active {
                 opacity: 1;
@@ -47,7 +79,7 @@ header {
 figure.highlight {
     padding: 1rem;
     border-radius: 4px;
-    margin-bottom: var(--margin-bottom);
+    margin-bottom: var(--spacing-4);
     font-family: 'Courier New', Courier, monospace;
     background-color: rgba(255, 255, 255, .05);
 }
@@ -60,7 +92,7 @@ h1 {
     font-size: var(--heading-font-size);
     line-height: var(--heading-line-height);
     font-weight: bold;
-    margin-bottom: var(--margin-bottom);
+    margin-bottom: var(--spacing-4);
 }
 
 footer {
@@ -87,48 +119,26 @@ div.posts-list {
                 color: var(--main-font-color);
             }
         }
+
+        a {
+            @include link-fill-on-hover;
+        }
     }
 }
 
 article.post {
     h1 {
-        margin-bottom: var(--margin-bottom);
+        margin-bottom: var(--spacing-4);
     }
 
     .post__content {
         p {
-            margin-bottom: var(--margin-bottom);
+            margin-bottom: var(--spacing-4);
         }
     }
 
     a {
-        position: relative;
-        text-decoration: none;
-        display: inline-block;
-        color: white;
-        z-index: 1;
-        padding: 0 4px;
-        transition: color ease 0.3s;
-
-        &::after {
-            content: '';
-            position: absolute;
-            z-index: -1;
-            width: 100%;
-            height: 5%;
-            left: 0;
-            bottom: 0;
-            background-color: royalblue;
-            -webkit-transition: all ease 0.3s;
-            transition: all ease 0.3s;
-        }
-
-        &:hover {
-            color: white;
-            &::after {
-                height: 90%;
-            }
-        }
+        @include link-fill-on-hover;
     }
 }
 
@@ -138,7 +148,7 @@ footer {
 }
 
 .post__categories {
-    margin-bottom: var(--margin-bottom);
+    margin-bottom: var(--spacing-4);
     .post__categories__category {
         display: inline-flex;
         border-radius: 4px;
